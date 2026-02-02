@@ -1,2 +1,15 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+html {
+  overflow-y: scroll;
+}
+
+  .btn {
+    @apply rounded-lg h-9 border-none bg-neutral-200 hover:bg-neutral-300;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700;
+  }
