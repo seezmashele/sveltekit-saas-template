@@ -58,18 +58,30 @@ function createAppStore() {
   function setTheme(theme: Theme) {
     state.theme = theme
     saveToStorage(STORAGE_KEYS.theme, theme)
+    applyTheme(theme)
+  }
 
-    if (browser) {
-      const root = document.documentElement
-      root.classList.remove('light', 'dark')
+  function applyTheme(theme: Theme) {
+    if (!browser) return
 
-      if (theme === 'system') {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-        root.classList.add(prefersDark ? 'dark' : 'light')
-      } else {
-        root.classList.add(theme)
-      }
+    if (theme === 'system') {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
     }
+  }
+
+  // Apply theme on initialization
+  if (browser) {
+    applyTheme(state.theme)
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      if (state.theme === 'system') {
+        applyTheme('system')
+      }
+    })
   }
 
   function toggleSidebar() {
