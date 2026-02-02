@@ -12,7 +12,7 @@
         <div  class="h-8 w-40 bg-blue-100"></div>
     </a>
     
-    <div class="flex items-center gap-2 ">
+    <div class="flex items-center gap-2.5 ">
         <a href="/login" class="btn">Login</a>
         <a href="/signup" class="btn">Signup</a>
     </div>
