@@ -1,0 +1,1 @@
+<img src="/Nuxt Studio_light.svg" alt="main logo" class="w-40 h-8">

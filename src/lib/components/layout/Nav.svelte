@@ -3,6 +3,7 @@
   import { user } from '$lib/stores/user.svelte'
   import { app } from '$lib/stores/app.svelte'
   import { Monitor, Moon, Sun, Bell, X } from 'lucide-svelte'
+    import NavLogo from './NavLogo.svelte';
 
   function cycleTheme() {
     const themes = ['light', 'dark', 'system'] as const
@@ -22,11 +23,11 @@
   }
 </script>
 
-<nav class="navbar bg-base-100 border-b border-base-300 px-5">
+<nav class="navbar bg-base-100 border-b dark:border-base-500 border-base-300 px-5">
   <!-- Logo -->
   <div class="flex-1">
-    <a aria-label="logo" href="/" class="btn btn-ghost text-xl">
-      <div class="h-8 w-40 bg-primary/20 rounded"></div>
+    <a aria-label="logo" href="/" class="btn hover:bg-transparent hover:shadow-none btn-ghost px-0 text-xl">
+       <NavLogo />
     </a>
   </div>
 

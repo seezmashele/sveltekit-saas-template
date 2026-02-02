@@ -7,9 +7,13 @@ html {
 }
 
   .btn {
-    @apply rounded-lg h-9 border-none bg-neutral-200 hover:bg-neutral-300;
+    @apply rounded-lg h-9 border-none;
   }
   
   .btn-primary {
     @apply bg-blue-600 hover:bg-blue-700;
+  }
+
+  .btn-gray {
+    @apply  bg-neutral-200 hover:bg-neutral-300
   }
