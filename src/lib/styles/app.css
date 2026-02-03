@@ -23,7 +23,7 @@ html {
 }
 
   .btn {
-    @apply rounded-lg h-9 border-none;
+    @apply rounded-lg h-9 border-none hover:bg-base-300;
   }
   
   .btn-primary {

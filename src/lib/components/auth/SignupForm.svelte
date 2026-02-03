@@ -15,7 +15,7 @@
   }))
 </script>
 
-<div class="card bg-base-100 shadow-xl w-full max-w-md">
+<div class="card bg-base-100 py-6 border border-base-300 w-full max-w-md">
   <div class="card-body">
     <h2 class="card-title text-2xl font-bold justify-center mb-6">Create your account</h2>
 
