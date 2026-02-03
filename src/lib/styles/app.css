@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
+@import './base.css';
 @plugin "daisyui" {
   themes: light --default, dark;
 }
@@ -9,7 +10,7 @@
 [data-theme="light"] {
   --color-base-100: oklch(100% 0 0);
   --color-base-200: oklch(97% 0 0);
-  --color-base-300: oklch(92% 0 0);
+  --color-base-300: oklch(91% 0 0);
 }
 
 [data-theme="dark"] {
@@ -26,20 +27,26 @@ html {
   font-family: 'Inter', sans-serif;
 }
 
+img {
+  /* Hide broken images */
+  color: transparent;
+  user-select: none;
+}
+
   .input {
-    @apply rounded-lg border-base-300
+    @apply border outline-offset-0 outline-base-300 focus:border-black rounded-lg shadow-none hover:shadow-none
   }
 
   .btn {
     @apply rounded-lg h-9 border-none hover:bg-base-300;
   }
   
+    .btn-ghost {
+      @apply shadow-none duration-0 hover:shadow-none
+    }
+  
   .btn-primary {
     @apply shadow-none bg-blue-600 hover:bg-blue-700;
-  }
-
-  .btn-gray {
-    @apply  bg-neutral-200 hover:bg-neutral-300
   }
 
   .card {

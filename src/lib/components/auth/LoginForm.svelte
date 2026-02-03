@@ -14,7 +14,7 @@
   }))
 </script>
 
-<div class="card bg-base-100 py-6 border border-base-300 w-full max-w-md">
+<div class="card w-full max-w-md">
   <div class="card-body">
     <h2 class="card-title text-2xl font-bold justify-center mb-6">Welcome back</h2>
 
@@ -43,13 +43,13 @@
       >
         {#snippet children(field)}
           <div class="form-control mb-4">
-            <label class="label" for="email">
+            <!-- <label class="label" for="email">
               <span class="label-text">Email</span>
-            </label>
+            </label> -->
             <input
               id="email"
               type="email"
-              placeholder="you@example.com"
+              placeholder="email"
               class="input input-bordered w-full"
               class:input-error={field.state.meta.errors.length > 0}
               value={field.state.value}
@@ -76,9 +76,9 @@
       >
         {#snippet children(field)}
           <div class="form-control mb-6">
-            <label class="label" for="password">
+            <!-- <label class="label" for="password">
               <span class="label-text">Password</span>
-            </label>
+            </label> -->
             <input
               id="password"
               type="password"

@@ -37,7 +37,7 @@
         <a
           href={item.href}
           class:active={isActive(item.href)}
-          class="btn duration-0 justify-start gap-3 shadow-none"
+          class="btn duration-0 font-normal justify-start gap-3 shadow-none"
         >
           <item.icon class="icon-primary" />
           {item.label}

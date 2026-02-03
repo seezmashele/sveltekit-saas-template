@@ -4,6 +4,7 @@
   import { app } from '$lib/stores/app.svelte'
   import { Monitor, Moon, Sun, Bell, X, Search, Plus } from 'lucide-svelte'
     import NavLogo from './NavLogo.svelte';
+    import NavSearchbar from './NavSearchbar.svelte';
 
   function cycleTheme() {
     const themes = ['light', 'dark', 'system'] as const
@@ -26,19 +27,14 @@
 <nav class="navbar h-5 bg-base-200 border-b dark:border-base-500 border-base-300 px-5">
   <!-- Logo -->
   <div class="flex-1">
-    <a aria-label="logo" href={auth.isAuthenticated ? '/dashboard' : '/'} class="btn hover:bg-transparent hover:shadow-none btn-ghost px-0 text-xl">
+    <a aria-label="logo" href={auth.isAuthenticated ? '/dashboard' : '/'} class=" inline-block px-0 text-xl">
        <NavLogo />
     </a>
   </div>
 
   <!-- Search (centered) -->
   {#if auth.isAuthenticated}
-    <div class="flex-1 flex justify-center">
-      <label class="input flex rounded-full items-center gap-2 w-full max-w-md">
-        <Search class="w-4 h-4 opacity-50" />
-        <input type="text" class="grow" placeholder="Search" />
-      </label>
-    </div>
+    <NavSearchbar />
   {/if}
 
   <div class="flex-1 flex items-center justify-end gap-2">

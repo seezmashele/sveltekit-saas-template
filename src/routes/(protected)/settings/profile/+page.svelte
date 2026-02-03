@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { user } from '$lib/stores/user.svelte'
+  import SectionTitle from '$lib/components/layout/SectionTitle.svelte';
+import { user } from '$lib/stores/user.svelte'
   import { Camera } from 'lucide-svelte'
 
   let firstName = $state(user.firstName || '')
@@ -13,10 +14,7 @@
 </script>
 
 <div class="space-y-6 max-w-2xl">
-  <div>
-    <h1 class="text-2xl font-bold">Profile</h1>
-    <p class="text-base-content/60">Manage your personal information.</p>
-  </div>
+  <SectionTitle title="Profile" description="Manage your personal information" />
 
   <!-- Avatar Section -->
   <div class="card bg-base-100 border border-base-300">

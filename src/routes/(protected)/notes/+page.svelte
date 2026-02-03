@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { ChevronLeft, ChevronRight } from 'lucide-svelte'
+  import SectionTitle from '$lib/components/layout/SectionTitle.svelte';
+import { ChevronLeft, ChevronRight } from 'lucide-svelte'
 
   const allNotes = [
     { id: 1, title: 'Project Ideas', category: 'Work', createdAt: '2025-01-28', status: 'Draft' },
@@ -44,10 +45,7 @@
 </script>
 
 <div class="space-y-6">
-  <div>
-    <h1 class="text-2xl font-bold">Notes</h1>
-    <p class="text-base-content/60">All your notes sorted by most recent.</p>
-  </div>
+<SectionTitle title="Notes" />
 
   <div class="card bg-base-100 border border-base-300">
     <div class="card-body">

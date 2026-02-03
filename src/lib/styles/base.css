@@ -1,0 +1,23 @@
+html,
+body {
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+:root {
+  font-synthesis: none;
+  font-family: sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img:not([src]) {
+  visibility: hidden;
+}
+
+.lucide {
+  stroke-width: 1.5px;
+}

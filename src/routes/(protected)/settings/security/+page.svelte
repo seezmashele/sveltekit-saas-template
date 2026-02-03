@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { Monitor, Smartphone, LogOut } from 'lucide-svelte'
+  import SectionTitle from '$lib/components/layout/SectionTitle.svelte';
+import { Monitor, Smartphone, LogOut } from 'lucide-svelte'
 
   let currentPassword = $state('')
   let newPassword = $state('')
@@ -33,10 +34,7 @@
 </script>
 
 <div class="space-y-6 max-w-2xl">
-  <div>
-    <h1 class="text-2xl font-bold">Security</h1>
-    <p class="text-base-content/60">Manage your account security settings.</p>
-  </div>
+  <SectionTitle title="Security" description="Manage your account security settings" />
 
   <!-- Change Password Section -->
   <div class="card bg-base-100 border border-base-300">
