@@ -1,5 +1,13 @@
-<script>
+<script lang="ts">
+    import { auth } from "$lib/stores/auth.svelte";
+    import { goto } from "$app/navigation";
     import Nav from "$lib/components/layout/Nav.svelte";
+
+    $effect(() => {
+        if (auth.isAuthenticated) {
+            goto('/dashboard')
+        }
+    })
 
     const features = [
         {

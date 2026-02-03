@@ -1,4 +1,5 @@
 import { user } from './user.svelte'
+import { getStoredTokens, storeTokens, clearStoredTokens } from '$lib/utils/storage'
 
 export interface AuthState {
   isAuthenticated: boolean
@@ -6,6 +7,7 @@ export interface AuthState {
   refreshToken: string | null
   expiresAt: number | null
   isLoading: boolean
+  isInitialized: boolean
   error: string | null
 }
 
@@ -15,6 +17,7 @@ const defaultState: AuthState = {
   refreshToken: null,
   expiresAt: null,
   isLoading: false,
+  isInitialized: false,
   error: null
 }
 
@@ -22,11 +25,13 @@ function createAuthStore() {
   let state = $state<AuthState>({ ...defaultState })
 
   function setTokens(accessToken: string, refreshToken: string, expiresIn: number) {
+    const expiresAt = Date.now() + expiresIn * 1000
     state.accessToken = accessToken
     state.refreshToken = refreshToken
-    state.expiresAt = Date.now() + expiresIn * 1000
+    state.expiresAt = expiresAt
     state.isAuthenticated = true
     state.error = null
+    storeTokens(accessToken, refreshToken, expiresAt)
   }
 
   function login(accessToken: string, refreshToken: string, expiresIn: number) {
@@ -39,7 +44,25 @@ function createAuthStore() {
     state.refreshToken = null
     state.expiresAt = null
     state.error = null
+    clearStoredTokens()
     user.clear()
+  }
+
+  async function initFromStorage() {
+    state.isLoading = true
+    const tokens = getStoredTokens()
+
+    if (tokens && tokens.expiresAt && tokens.expiresAt > Date.now()) {
+      state.accessToken = tokens.accessToken
+      state.refreshToken = tokens.refreshToken
+      state.expiresAt = tokens.expiresAt
+      state.isAuthenticated = true
+    } else {
+      clearStoredTokens()
+    }
+
+    state.isLoading = false
+    state.isInitialized = true
   }
 
   function setLoading(loading: boolean) {
@@ -65,6 +88,7 @@ function createAuthStore() {
     get refreshToken() { return state.refreshToken },
     get expiresAt() { return state.expiresAt },
     get isLoading() { return state.isLoading },
+    get isInitialized() { return state.isInitialized },
     get error() { return state.error },
 
     login,
@@ -73,7 +97,8 @@ function createAuthStore() {
     setLoading,
     setError,
     clearError,
-    isTokenExpired
+    isTokenExpired,
+    initFromStorage
   }
 }
 

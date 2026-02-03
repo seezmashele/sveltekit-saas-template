@@ -23,10 +23,10 @@
   }
 </script>
 
-<nav class="navbar bg-base-100 border-b dark:border-base-500 border-base-300 px-5">
+<nav class="navbar h-5 bg-base-100 border-b dark:border-base-500 border-base-300 px-5">
   <!-- Logo -->
   <div class="flex-1">
-    <a aria-label="logo" href="/" class="btn hover:bg-transparent hover:shadow-none btn-ghost px-0 text-xl">
+    <a aria-label="logo" href={auth.isAuthenticated ? '/dashboard' : '/'} class="btn hover:bg-transparent hover:shadow-none btn-ghost px-0 text-xl">
        <NavLogo />
     </a>
   </div>
@@ -92,12 +92,12 @@
       <div class="dropdown dropdown-end">
         <button tabindex="0" class="btn btn-ghost btn-circle avatar">
           {#if user.avatarUrl}
-            <div class="w-10 rounded-full">
+            <div class="w-8 rounded-full">
               <img alt="User avatar" src={user.avatarUrl} />
             </div>
           {:else}
             <div class="avatar placeholder">
-              <div class="bg-neutral text-neutral-content rounded-full w-10">
+              <div class="bg-neutral text-neutral-content rounded-full w-8">
                 <span class="text-sm">{getInitials(user.firstName, user.lastName)}</span>
               </div>
             </div>
