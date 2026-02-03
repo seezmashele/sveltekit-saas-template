@@ -30,14 +30,14 @@
       <div class="card bg-base-100 border border-base-300">
         <div class="card-body p-4">
           <div class="flex items-center justify-between">
-            <div>
+            <div class="flex flex-col gap-2">
               <p class="text-sm text-base-content/60">{stat.label}</p>
-              <p class="text-2xl font-bold">{stat.value}</p>
-              <p class="text-xs text-base-content/50 mt-1">{stat.change}</p>
+              <p class="text-xl font-bold">{stat.value}</p>
+              <p class="text-xs text-base-content/50">{stat.change}</p>
             </div>
-            <div class="bg-primary/10 p-3 rounded-lg">
+            <!-- <div class="bg-primary/10 p-3 rounded-lg">
               <stat.icon class="h-6 w-6 text-primary" />
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

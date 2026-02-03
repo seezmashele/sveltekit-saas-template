@@ -31,15 +31,13 @@
       <span class="font-medium text-sm">{user.fullName || 'User'}</span>
     </div>
   </div>
-  <!-- <div class="border-b border-base-300 mx-4 mb-4"></div> -->
-
   <ul class="menu gap-1 w-full">
     {#each navItems as item}
       <li class="w-full">
         <a
           href={item.href}
           class:active={isActive(item.href)}
-          class="btn justify-start gap-3 shadow-none"
+          class="btn duration-0 justify-start gap-3 shadow-none"
         >
           <item.icon class="icon-primary" />
           {item.label}

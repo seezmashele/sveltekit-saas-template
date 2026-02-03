@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 @plugin "daisyui" {
   themes: light --default, dark;
 }
+
+
 
 [data-theme="light"] {
   --color-base-100: oklch(100% 0 0);
@@ -20,14 +23,19 @@
 
 html {
   overflow-y: scroll;
+  font-family: 'Inter', sans-serif;
 }
+
+  .input {
+    @apply rounded-lg border-base-300
+  }
 
   .btn {
     @apply rounded-lg h-9 border-none hover:bg-base-300;
   }
   
   .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700;
+    @apply shadow-none bg-blue-600 hover:bg-blue-700;
   }
 
   .btn-gray {

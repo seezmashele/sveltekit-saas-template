@@ -2,7 +2,7 @@
   import { auth } from '$lib/stores/auth.svelte'
   import { user } from '$lib/stores/user.svelte'
   import { app } from '$lib/stores/app.svelte'
-  import { Monitor, Moon, Sun, Bell, X } from 'lucide-svelte'
+  import { Monitor, Moon, Sun, Bell, X, Search, Plus } from 'lucide-svelte'
     import NavLogo from './NavLogo.svelte';
 
   function cycleTheme() {
@@ -31,7 +31,25 @@
     </a>
   </div>
 
-  <div class="flex items-center gap-2">
+  <!-- Search (centered) -->
+  {#if auth.isAuthenticated}
+    <div class="flex-1 flex justify-center">
+      <label class="input flex rounded-full items-center gap-2 w-full max-w-md">
+        <Search class="w-4 h-4 opacity-50" />
+        <input type="text" class="grow" placeholder="Search" />
+      </label>
+    </div>
+  {/if}
+
+  <div class="flex-1 flex items-center justify-end gap-2">
+    <!-- New Note Button -->
+    {#if auth.isAuthenticated}
+      <button class="btn btn-sm btn-primary">
+        <Plus class="w-4 h-4" />
+        New Note
+      </button>
+    {/if}
+
     <!-- Theme Toggle -->
     <button
       class="btn btn-ghost btn-circle"
@@ -50,7 +68,7 @@
 
     {#if auth.isAuthenticated}
       <!-- Notifications Dropdown -->
-      <div class="dropdown dropdown-end">
+      <div class="dropdown dropdown-end hidden">
         <button tabindex="0" class="btn btn-ghost btn-circle">
           <div class="indicator">
             {#if app.notifications.length > 0}
@@ -90,15 +108,15 @@
 
       <!-- Avatar Dropdown -->
       <div class="dropdown dropdown-end">
-        <button tabindex="0" class="btn btn-ghost btn-circle avatar">
+        <button tabindex="0" class="rounded-full w-9 h-9 cursor-pointer bg-neutral-300f flex items-center justify-center avatar">
           {#if user.avatarUrl}
-            <div class="w-8 rounded-full">
-              <img alt="User avatar" src={user.avatarUrl} />
+            <div class="w-9 rounded-full">
+              <img alt="User avatar bg-base-300" src={user.avatarUrl} />
             </div>
           {:else}
             <div class="avatar placeholder">
-              <div class="bg-neutral text-neutral-content rounded-full w-8">
-                <span class="text-sm">{getInitials(user.firstName, user.lastName)}</span>
+              <div class="bg-base-300 text-neutral-content rounded-full w-9">
+                <span class="text-sm text-black">{getInitials(user.firstName, user.lastName)}</span>
               </div>
             </div>
           {/if}
