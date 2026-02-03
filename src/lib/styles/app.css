@@ -17,3 +17,7 @@ html {
   .btn-gray {
     @apply  bg-neutral-200 hover:bg-neutral-300
   }
+
+  .card {
+    @apply shadow-none
+  }

@@ -2,6 +2,7 @@
     import { auth } from "$lib/stores/auth.svelte";
     import { goto } from "$app/navigation";
     import Nav from "$lib/components/layout/Nav.svelte";
+    import NavLogo from "$lib/components/layout/NavLogo.svelte";
 
     $effect(() => {
         if (auth.isAuthenticated) {
@@ -147,7 +148,7 @@
 <!-- Footer -->
 <footer class="px-5 py-12 border-t border-neutral-200">
     <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-        <div class="h-8 w-40 bg-blue-100"></div>
+        <NavLogo />
         <div class="flex gap-6 text-sm text-neutral-600">
             <a href="#" class="hover:text-neutral-900">Privacy</a>
             <a href="#" class="hover:text-neutral-900">Terms</a>
