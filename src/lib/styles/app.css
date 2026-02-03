@@ -1,6 +1,22 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: light --default, dark;
+}
 
+[data-theme="light"] {
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(97% 0 0);
+  --color-base-300: oklch(92% 0 0);
+}
+
+[data-theme="dark"] {
+  --color-base-100: oklch(21% 0 0);
+  --color-base-200: oklch(16% 0 0);
+  --color-base-300: oklch(26% 0 0);
+  /* --color-base-100: oklch(21% 0.005 285);
+  --color-base-200: oklch(16% 0.005 285);
+  --color-base-300: oklch(26% 0.005 285); */
+}
 
 html {
   overflow-y: scroll;
@@ -20,4 +36,12 @@ html {
 
   .card {
     @apply shadow-none
+  }
+
+  .icon-primary {
+    @apply h-4.5 w-4.5
+  }
+
+  .icon-secondary {
+    @apply h-6 w-6
   }

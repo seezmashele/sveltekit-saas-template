@@ -23,7 +23,7 @@
   }
 </script>
 
-<nav class="navbar h-5 bg-base-100 border-b dark:border-base-500 border-base-300 px-5">
+<nav class="navbar h-5 bg-base-200 border-b dark:border-base-500 border-base-300 px-5">
   <!-- Logo -->
   <div class="flex-1">
     <a aria-label="logo" href={auth.isAuthenticated ? '/dashboard' : '/'} class="btn hover:bg-transparent hover:shadow-none btn-ghost px-0 text-xl">
@@ -40,11 +40,11 @@
       title={`Theme: ${app.theme}`}
     >
       {#if app.theme === 'light'}
-        <Sun class="h-5 w-5" />
+        <Sun class="icon-primary" />
       {:else if app.theme === 'dark'}
-        <Moon class="h-5 w-5" />
+        <Moon class="icon-primary" />
       {:else}
-        <Monitor class="h-5 w-5" />
+        <Monitor class="icon-primary" />
       {/if}
     </button>
 
@@ -56,7 +56,7 @@
             {#if app.notifications.length > 0}
               <span class="indicator-item badge badge-primary badge-xs">{app.notifications.length}</span>
             {/if}
-            <Bell class="h-5 w-5" />
+            <Bell class="icon-primary" />
           </div>
         </button>
         <div tabindex="0" class="dropdown-content z-[1] card card-compact w-80 bg-base-100 shadow-lg border border-base-300 mt-3">

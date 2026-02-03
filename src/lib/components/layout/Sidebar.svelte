@@ -14,7 +14,7 @@
   }
 </script>
 
-<aside class="w-54 min-h-[calc(100vh-4rem)] bg-base-100 border-r border-base-300 p-4 hidden lg:block">
+<aside class="w-54 min-h-[calc(100vh-4rem)] bg-base-200 border-r border-base-300 p-4 hidden lg:block">
   <ul class="menu gap-1">
     {#each navItems as item}
       <li class="w-full">
@@ -22,7 +22,7 @@
           href={item.href}
           class:active={isActive(item.href)}
         >
-          <item.icon class="h-5 w-5" />
+          <item.icon class="icon-primary" />
           {item.label}
         </a>
       </li>
