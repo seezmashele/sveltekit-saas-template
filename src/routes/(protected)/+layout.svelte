@@ -4,6 +4,8 @@
   import Nav from '$lib/components/layout/Nav.svelte'
   import Sidebar from '$lib/components/layout/Sidebar.svelte'
   import Loading from '$lib/components/ui/Loading.svelte'
+  import ContentCenteringWrapper from '$lib/components/wrappers/ContentCenteringWrapper.svelte';
+  import ContentSizeWrapper from '$lib/components/wrappers/ContentSizeWrapper.svelte';
 
   let { children } = $props()
 
@@ -23,8 +25,12 @@
   <Nav />
   <div class="flex">
     <Sidebar />
-    <main class="flex-1 p-6">
-      {@render children()}
+    <main class="flex-1">
+      <ContentCenteringWrapper>
+        <ContentSizeWrapper>
+          {@render children()}
+        </ContentSizeWrapper>
+      </ContentCenteringWrapper>
     </main>
   </div>
 {/if}
