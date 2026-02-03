@@ -1,21 +1,8 @@
-import { apiRequest, ApiError } from './client'
+import { apiRequest, performTokenRefresh, ApiError, NetworkError, isNetworkError } from './client'
+import type { AuthResponse, PocketBaseUser } from './client'
 import { auth } from '$lib/stores/auth.svelte'
 import { user } from '$lib/stores/user.svelte'
 import { goto } from '$app/navigation'
-
-interface PocketBaseUser {
-  id: string
-  email: string
-  emailVisibility: boolean
-  verified: boolean
-  created: string
-  updated: string
-}
-
-interface AuthResponse {
-  token: string
-  record: PocketBaseUser
-}
 
 function mapUserRecord(record: PocketBaseUser) {
   user.set({
@@ -46,7 +33,9 @@ export async function login(email: string, password: string): Promise<void> {
 
     await goto('/dashboard')
   } catch (error) {
-    if (error instanceof ApiError) {
+    if (error instanceof NetworkError) {
+      auth.setError(error.isTimeout ? 'Request timed out. Please try again.' : 'Network error. Please check your connection.')
+    } else if (error instanceof ApiError) {
       auth.setError(error.message)
     } else {
       auth.setError('An unexpected error occurred')
@@ -75,7 +64,9 @@ export async function signup(email: string, password: string): Promise<void> {
     // Auto-login after signup
     await login(email, password)
   } catch (error) {
-    if (error instanceof ApiError) {
+    if (error instanceof NetworkError) {
+      auth.setError(error.isTimeout ? 'Request timed out. Please try again.' : 'Network error. Please check your connection.')
+    } else if (error instanceof ApiError) {
       auth.setError(error.message)
     } else {
       auth.setError('An unexpected error occurred')
@@ -92,11 +83,13 @@ export function logout(): void {
 }
 
 export async function refreshToken(): Promise<void> {
+  if (!auth.accessToken) {
+    auth.logout()
+    throw new Error('No access token available')
+  }
+
   try {
-    const response = await apiRequest<AuthResponse>(
-      '/api/collections/users/auth-refresh',
-      { method: 'POST' }
-    )
+    const response = await performTokenRefresh(auth.accessToken)
 
     const expiresIn = 7 * 24 * 60 * 60
     auth.setTokens(response.token, '', expiresIn)
@@ -124,4 +117,4 @@ export async function getCurrentUser(): Promise<void> {
   }
 }
 
-export { ApiError }
+export { ApiError, NetworkError, isNetworkError }

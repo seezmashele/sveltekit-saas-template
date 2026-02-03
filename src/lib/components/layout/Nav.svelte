@@ -24,7 +24,7 @@
   }
 </script>
 
-<nav class="navbar h-5 bg-base-200 border-b dark:border-base-500 border-base-300 px-5">
+<nav class="flex h-15 items-center bg-base-200 border-b dark:border-base-500 border-base-300 px-5">
   <!-- Logo -->
   <div class="flex-1">
     <a aria-label="logo" href={auth.isAuthenticated ? '/dashboard' : '/'} class=" inline-block px-0 text-xl">
@@ -124,11 +124,11 @@
               <span class="badge badge-primary badge-sm ml-2">Pro</span>
             {/if}
           </li>
-          <li><a href="/dashboard">Dashboard</a></li>
-          <li><a href="/settings/profile">Profile</a></li>
-          <li><a href="/settings/security">Security</a></li>
-          <div class="divider my-1"></div>
-          <li><button onclick={handleLogout} class="text-error">Logout</button></li>
+          <li class="rounded-lg"><a href="/dashboard">Dashboard</a></li>
+          <li class="rounded-lg"><a href="/settings/profile">Profile</a></li>
+          <li class="rounded-lg"><a href="/settings/security">Security</a></li>
+          <div class="border-b border-base-300 my-1"></div>
+          <li><button onclick={handleLogout} >Logout</button></li>
         </ul>
       </div>
     {:else}
