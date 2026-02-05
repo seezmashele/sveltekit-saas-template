@@ -14,7 +14,7 @@
   }))
 </script>
 
-<div class="card w-full max-w-md">
+<div class="card w-full max-w-md bg-base-100 border border-base-300">
   <div class="card-body">
     <h2 class="card-title text-2xl font-bold justify-center mb-6">Welcome back</h2>
 

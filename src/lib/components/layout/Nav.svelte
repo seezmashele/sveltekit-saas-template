@@ -6,6 +6,8 @@
     import NavLogo from './NavLogo.svelte';
     import NavSearchbar from './NavSearchbar.svelte';
 
+  const { whiteMode } = $props()
+
   function cycleTheme() {
     const themes = ['light', 'dark', 'system'] as const
     const currentIndex = themes.indexOf(app.theme)
@@ -24,7 +26,7 @@
   }
 </script>
 
-<nav class="flex h-15 items-center bg-base-200 border-b dark:border-base-500 border-base-300 px-5">
+<nav class={`${whiteMode ? 'bg-base-100' : 'bg-base-200'} flex h-15 items-center border-b dark:border-base-500 border-base-300 px-5`}>
   <!-- Logo -->
   <div class="flex-1">
     <a aria-label="logo" href={auth.isAuthenticated ? '/dashboard' : '/'} class=" inline-block px-0 text-xl">
